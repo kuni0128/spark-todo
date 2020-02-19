@@ -1,8 +1,16 @@
+package todolist
+
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import spark.Spark.get
 
 fun main(args: Array<String>) {
-    get("/hello") { req, res ->
-        val name: String? = req.queryParams("name")
-        "Hello, ${name ?: "world"}!"
+    val objectMapper = ObjectMapper().registerKotlinModule()
+    get("/tasks") { req, res ->
+        val tasks = listOf(
+            Task(1, "英単語を勉強する", false),
+            Task(2, "ジムに行く", true)
+        )
+        objectMapper.writeValueAsString(tasks)
     }
 }
