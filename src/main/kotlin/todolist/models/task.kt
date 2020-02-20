@@ -1,4 +1,4 @@
-package todolist
+package todolist.models
 
 data class Task(
     val id: Long,

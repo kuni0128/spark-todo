@@ -1,7 +1,7 @@
 package todolist.controllers
 
 import spark.Route
-import todolist.Task
+import todolist.models.Task
 
 class TaskController {
     fun index(): Route = Route { req, res ->
